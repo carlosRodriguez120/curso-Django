@@ -1,11 +1,22 @@
 <html>
 
 <body>
+    {% include "superior/barra.html" %}
     <H1 style="color: rgb(49, 49, 227)">
         HOLA ESTAMOS VIENDO NUESTRA PRIEMERA PLANTILLA
     </h1>
+
+
+    {% if nombre_Persona == 'carlos ' %}
+    <p> EL CURSO ES IMPARTIDO POR EL PROFESOR CARLOS</p>
+    {% else %}
+    <p>el curso lo imparte el profesor {{nombre_Persona}}</p>
+    {% endif %}
+
+
+
     <p style="color: rgb(0, 0, 0)">
-        EL NOMBRE DE LA PERSONA ES: {{nombre_Persona}} {{apellido_Persona}}
+        EL NOMBRE DE LA PERSONA ES: {{nombre_Persona.upper}} {{apellido_Persona}}
     </p>
     <p>
         la fecha actual es {{momento_Actual.day}}/{{momento_Actual.month}}/{{momento_Actual.year}}
@@ -13,9 +24,13 @@
     <p><strong>TEMAS</strong></p>
     
         <ul>
+        {% if temas %}
         {% for i in temas %} 
-        <li>{{i}}</li>
+        <li>{{i|first|upper}} . {{i}}</li>
         {% endfor %}
+        {% else %}
+        <p> NO HAY ELEMENTO QUE MOSTRAR</p>
+        {% endif %}
          </ul>
 
    

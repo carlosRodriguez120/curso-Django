@@ -1,7 +1,8 @@
-from django.template import Template, Context
+
 from django.http import HttpResponse
 import datetime
 
+from django.shortcuts import render
 
 class persona(object):
     def __init__(self, nombre, apellido):
@@ -10,18 +11,41 @@ class persona(object):
 
 
 def saludo(request):
-    persona1 = persona("carlos ", "Rodriguez")
+    persona1 = persona("jose ", "Rodriguez")
     temas = ["plantillas", "modelos", "formularios", "vistas", "despliegue"]
     ahora = datetime.datetime.now()
-    doc_Externo = open(
-        "C:/Users/USER/Desktop/ProjectDjango/Proyecto1/Proyecto1/Plantillas/miPlantilla.html")
-    plantilla = Template(doc_Externo.read())
-    doc_Externo.close()
+    contexto = {"nombre_Persona": persona1.nombre, "apellido_Persona": persona1.apellido, "momento_Actual": ahora,
+                        "temas": temas}  # puede recibir parametros como diccionarios
+    return render(request,"miPlantilla.html",contexto)
 
-    contexto = Context({"nombre_Persona": persona1.nombre, "apellido_Persona": persona1.apellido, "momento_Actual": ahora,
-                        "temas": temas})  # puede recibir parametros como diccionarios
-    documento = plantilla.render(contexto)
-    return HttpResponse(documento)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def despedida(request):
