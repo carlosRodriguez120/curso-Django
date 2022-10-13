@@ -1,0 +1,24 @@
+<html>
+
+<body>
+    <H1 style="color: rgb(49, 49, 227)">
+        HOLA ESTAMOS VIENDO NUESTRA PRIEMERA PLANTILLA
+    </h1>
+    <p style="color: rgb(0, 0, 0)">
+        EL NOMBRE DE LA PERSONA ES: {{nombre_Persona}} {{apellido_Persona}}
+    </p>
+    <p>
+        la fecha actual es {{momento_Actual.day}}/{{momento_Actual.month}}/{{momento_Actual.year}}
+    </p>
+    <p><strong>TEMAS</strong></p>
+    
+        <ul>
+        {% for i in temas %} 
+        <li>{{i}}</li>
+        {% endfor %}
+         </ul>
+
+   
+</body>
+
+</html>
