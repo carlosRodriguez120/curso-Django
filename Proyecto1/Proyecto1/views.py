@@ -1,7 +1,6 @@
 
 from django.http import HttpResponse
 import datetime
-
 from django.shortcuts import render
 
 class persona(object):
@@ -17,34 +16,6 @@ def saludo(request):
     contexto = {"nombre_Persona": persona1.nombre, "apellido_Persona": persona1.apellido, "momento_Actual": ahora,
                         "temas": temas}  # puede recibir parametros como diccionarios
     return render(request,"miPlantilla.html",contexto)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -72,3 +43,10 @@ def calcularEdad(request, edad, anio):
     documento = "<html><body><h2>en el año %s tendras %s años </h2></body></html>" % (
         anio, edadFutura)
     return HttpResponse(documento)
+
+def pruebaVista(request):
+     ahora = datetime.datetime.now()
+     contexto = {"momento_Actual":ahora}
+     return render(request,"cursoHtml.html",contexto)
+def vista2(request):
+    return render(request,"hija2.html",{})
